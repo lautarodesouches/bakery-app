@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import { ButtonSecondary } from "../../components";
 import { styles } from "./styles";
 
-const ProductDetail = ({ navigation, route }) => {
+const ProductDetail = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Text>Detalle del producto</Text>

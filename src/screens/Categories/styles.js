@@ -1,12 +1,8 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-    container:{
+    container: {
+        marginTop: 10,
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    text: {
-        fontFamily: 'AnekBold',
     }
 });
