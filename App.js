@@ -1,5 +1,5 @@
 import { useFonts } from 'expo-font';
-import { Categories, ProductDetail, Products } from './src/screens';
+import AppNavigator from './src/navigation';
 
 export default function App() {
 
@@ -11,11 +11,5 @@ export default function App() {
   
   if (!loaded) return null;
 
-  return (
-    <>
-      <Categories />
-      <ProductDetail />
-      <Products />
-    </>
-  );
+  return <AppNavigator />;
 }
