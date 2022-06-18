@@ -8,7 +8,7 @@ const MainNavigator = () => {
         <Stack.Navigator initialRouteName='Categories'>
             <Stack.Screen name='Categorías' component={Categories} />
             <Stack.Screen name='Productos' component={Products} />
-            <Stack.Screen name='Detalle del producto' component={ProductDetail} />
+            <Stack.Screen name='Detalle' component={ProductDetail} />
         </Stack.Navigator>
     );
 }
