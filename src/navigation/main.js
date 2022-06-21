@@ -6,23 +6,39 @@ import { isIOS } from '../constants/utils';
 const Stack = createNativeStackNavigator();
 
 const MainNavigator = () => {
-    return(
+    return (
         <Stack.Navigator
             initialRouteName='Categories'
             screenOptions={{
                 headerStyle: {
                     backgroundColor: isIOS ? secondaryBg : primaryBg,
                 },
-                headerTintColor: isIOS ?secondaryText : primaryText,
+                headerTintColor: isIOS ? secondaryText : primaryText,
                 headerTitleAlign: 'center',
                 headerTitleStyle: {
                     fontFamily: 'AnekRegular',
                 }
             }}
         >
-            <Stack.Screen name='Categories' component={Categories} options={{title: 'Categorías'}} />
-            <Stack.Screen name='Products' component={Products} options={{title: 'Productos'}} />
-            <Stack.Screen name='ProductDetail' component={ProductDetail} options={{title: 'Detalle del Producto'}} />
+            <Stack.Screen
+                name='Categories'
+                component={Categories}
+                options={{ title: 'Categorías' }}
+            />
+            <Stack.Screen
+                name='Products'
+                component={Products}
+                options={({ route }) => ({
+                    title: route.params.name,
+                    headerStyle: {backgroundColor: route.params.background},
+                    headerTintColor: '#000'
+                })}
+            />
+            <Stack.Screen
+                name='ProductDetail'
+                component={ProductDetail}
+                options={{ title: 'Detalle del Producto' }}
+            />
         </Stack.Navigator>
     );
 }

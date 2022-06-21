@@ -1,13 +1,28 @@
-import { View, Text } from "react-native";
-import { ButtonPrimary, ButtonSecondary } from "../../components";
+import { FlatList, View } from "react-native";
+import ProductItem from "../../components/ProductItem";
+import { products } from "../../constants/data";
 import { styles } from "./styles";
 
-const Products = ({ navigation }) => {
+const Products = ({ navigation, route }) => {
+
+    const filteredProducts = products.filter(el => el.categoryId === route.params.categoryId)
+
+    const handleSelect = item => (
+        navigation.navigate('ProductDetail', {
+            productId: item.id,
+            name: item.title,
+        })
+    )
+
+    const renderItem = ({item}) => <ProductItem item={item} handleSelect={handleSelect} categoryColor={route.params.background} />
+
     return (
         <View style={styles.container}>
-            <Text>Productos de la categoría</Text>
-            <ButtonPrimary onPress={() => navigation.navigate('ProductDetail')}>Ir al Detalle</ButtonPrimary>
-            <ButtonSecondary onPress={() => navigation.goBack()}>Ir atrás</ButtonSecondary>
+            <FlatList
+                data={filteredProducts}
+                renderItem={renderItem}
+                contentContainerStyle={{justifyContent: 'center', flexGrow: 1}}
+            />
         </View>
     );
 }
