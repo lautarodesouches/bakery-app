@@ -1,6 +1,6 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "react-native";
-import MainNavigator from "./main";
+import TabNavigator from "./tab";
 
 const AppNavigator = () => {
     return (
@@ -10,7 +10,7 @@ const AppNavigator = () => {
                 backgroundColor="transparent"
                 barStyle="default"
             />
-            <MainNavigator />
+            <TabNavigator />
         </NavigationContainer>
     );
 }
