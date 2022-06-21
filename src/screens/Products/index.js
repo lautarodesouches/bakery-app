@@ -5,16 +5,20 @@ import { styles } from "./styles";
 
 const Products = ({ navigation, route }) => {
 
+    const categoryColor = route.params.background;
+
     const filteredProducts = products.filter(el => el.categoryId === route.params.categoryId)
 
     const handleSelect = item => (
         navigation.navigate('ProductDetail', {
+            product: item,
             productId: item.id,
             name: item.title,
+            background: categoryColor
         })
     )
 
-    const renderItem = ({item}) => <ProductItem item={item} handleSelect={handleSelect} categoryColor={route.params.background} />
+    const renderItem = ({item}) => <ProductItem item={item} handleSelect={handleSelect} categoryColor={categoryColor} />
 
     return (
         <View style={styles.container}>

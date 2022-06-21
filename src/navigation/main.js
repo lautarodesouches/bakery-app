@@ -37,7 +37,11 @@ const MainNavigator = () => {
             <Stack.Screen
                 name='ProductDetail'
                 component={ProductDetail}
-                options={{ title: 'Detalle del Producto' }}
+                options={({ route }) => ({
+                    title: route.params.name,
+                    headerStyle: {backgroundColor: route.params.background},
+                    headerTintColor: '#000'
+                })}
             />
         </Stack.Navigator>
     );
