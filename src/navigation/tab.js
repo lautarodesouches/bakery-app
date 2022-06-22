@@ -6,6 +6,8 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 const BottomTabs = createBottomTabNavigator();
 
+const Icon = ({name, focused}) => <Ionicons name={focused ? name : `${name}-outline`} color={focused ? primaryText : '#d1d1d1'} size={20} />
+
 const TabNavigator = () => {
     return (
         <BottomTabs.Navigator
@@ -20,7 +22,7 @@ const TabNavigator = () => {
                 tabBarStyle: {
                     backgroundColor: primaryBg,
                     padding: 10,
-                    height: '7%'
+                    flex: 0.08,
                 }
             }}
         >
@@ -29,7 +31,7 @@ const TabNavigator = () => {
                 component={MainNavigator}
                 options={{
                     tabBarLabel: 'Shop',
-                    tabBarIcon: ({ focused }) => <Ionicons name={focused ? 'home' : 'home-outline'} size={20} color={focused ? primaryText : '#d1d1d1'} />
+                    tabBarIcon: ({ focused }) => <Icon name='home' focused={focused} />
                 }}
             />
             <BottomTabs.Screen
@@ -37,7 +39,7 @@ const TabNavigator = () => {
                 component={CartNavigator}
                 options={{
                     tabBarLabel: 'Cart',
-                    tabBarIcon: ({ focused }) => <Ionicons name={focused ? 'cart' : 'cart-outline'} size={20} color={focused ? primaryText : '#d1d1d1'} />
+                    tabBarIcon: ({ focused }) => <Icon name='cart' focused={focused} />
                 }}
             />
         </BottomTabs.Navigator>

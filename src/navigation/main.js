@@ -23,24 +23,20 @@ const MainNavigator = () => {
             <Stack.Screen
                 name='Categories'
                 component={Categories}
-                options={{ title: 'Categorías' }}
+                options={{ title: 'Categorías'}}
             />
             <Stack.Screen
                 name='Products'
                 component={Products}
                 options={({ route }) => ({
-                    title: route.params.name,
-                    headerStyle: {backgroundColor: route.params.background},
-                    headerTintColor: '#000'
+                    title: route.params.name
                 })}
             />
             <Stack.Screen
                 name='ProductDetail'
                 component={ProductDetail}
                 options={({ route }) => ({
-                    title: route.params.name,
-                    headerStyle: {backgroundColor: route.params.background},
-                    headerTintColor: '#000'
+                    title: route.params.name
                 })}
             />
         </Stack.Navigator>
