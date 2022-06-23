@@ -8,11 +8,11 @@ const formatDate = time => {
 
 const OrderItem = ({ item, handleSelect }) => {
 
-    const { id, date, total } = item;
+    const { date, total } = item;
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.touchable} onPress={() => handleSelect(id)}>
+            <TouchableOpacity style={styles.touchable} onPress={() => handleSelect(item)}>
                 <Text style={styles.date}>{formatDate(date)}</Text>
                 <Text style={styles.total}>${total}</Text>
             </TouchableOpacity>

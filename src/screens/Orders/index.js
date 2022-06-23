@@ -5,8 +5,8 @@ import { styles } from "./styles";
 
 const Orders = () => {
 
-    const handleSelect = id => {
-        console.log(id);
+    const handleSelect = item => {
+        console.log(item);
     }
 
     const renderOrder = ({ item }) => <OrderItem item={item} handleSelect={handleSelect} />
