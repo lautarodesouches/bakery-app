@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
         flex: 1,
         borderRadius: 10,
         margin: 10,
-        height: 130,
+        height: 100,
     },
     touchable: {
         flex: 1,

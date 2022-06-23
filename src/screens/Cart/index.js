@@ -23,7 +23,7 @@ const Cart = () => {
                 <FlatList
                     data={cart}
                     renderItem={renderCartItem}
-                    keyExtractor={(item) => item.id}
+                    keyExtractor={item => item.id}
                 />
             </View>
             <View>

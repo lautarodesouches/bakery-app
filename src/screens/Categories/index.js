@@ -22,6 +22,7 @@ const Categories = ({ navigation }) => {
                 keyExtractor={item => item.id}
                 renderItem={renderItem}
                 contentContainerStyle={{justifyContent: 'center', flexGrow: 1}}
+                numColumns={2}
             />
         </View>
     );
