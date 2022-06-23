@@ -14,8 +14,7 @@ const Categories = ({ navigation }) => {
     const handleSelect = item => (
         dispatch(selectCategory(item.id)),
         navigation.navigate('Products', {
-            name: item.title,
-            background: item.color
+            name: item.title
         })
     )
 

@@ -1,10 +1,11 @@
 import { View, Text } from "react-native";
 import { ButtonSecondary } from "../../components";
 import { styles } from "./styles";
+import { useSelector } from 'react-redux';
 
-const ProductDetail = ({ navigation, route }) => {
+const ProductDetail = ({ navigation }) => {
 
-    const product = route.params.product
+    const product = useSelector(state => state.products.selected)
 
     const { title, description, weight, price } = product;
 
