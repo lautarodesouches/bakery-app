@@ -1,13 +1,18 @@
 import { View, Text } from "react-native";
-import { ButtonSecondary } from "../../components";
+import { ButtonPrimary, ButtonSecondary } from "../../components";
+import { addToCart } from "../../store/actions";
 import { styles } from "./styles";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const ProductDetail = ({ navigation }) => {
+
+    const dispatch = useDispatch()
 
     const product = useSelector(state => state.products.selected)
 
     const { title, description, weight, price } = product;
+
+    const handleAddItem = () => dispatch(addToCart(product))
 
     return (
         <View style={styles.container}>
@@ -17,7 +22,14 @@ const ProductDetail = ({ navigation }) => {
                 <Text style={styles.detailText}>{weight}</Text>
                 <Text style={styles.detailText}>${price}</Text>
             </View>
-            <ButtonSecondary onPress={() => navigation.goBack()}>Ir atrás</ButtonSecondary>
+            <View style={styles.buttonsContainer}>
+                <ButtonSecondary onPress={() => navigation.goBack()}>
+                    Ir atrás
+                </ButtonSecondary>
+                <ButtonPrimary onPress={handleAddItem}>
+                    Añadir al carrito
+                </ButtonPrimary>
+            </View>
         </View>
     );
 }

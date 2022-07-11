@@ -23,5 +23,10 @@ export const styles = StyleSheet.create({
     },
     detailText: {
         fontSize: 20
+    },
+    buttonsContainer: {
+        flexDirection: 'row',
+        width: '100%',
+        justifyContent: 'space-evenly'
     }
 });

@@ -4,7 +4,6 @@ export const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
         flex: 0.85,
-        justifyContent: 'flex-start',
     },
     cartList: {
         marginTop: 5,

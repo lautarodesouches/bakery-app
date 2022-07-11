@@ -1,38 +1,49 @@
 import { FlatList, View, Text } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
 import { ButtonPrimary, CartItem } from "../../components";
-import { cart } from "../../constants/data/cart";
+import { removeItem } from "../../store/actions";
 import { styles } from "./styles";
 
 const Cart = () => {
 
-    const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    const dispatch = useDispatch()
+
+    const cart = useSelector(state => state.cart.items)
+    const total = useSelector(state => state.cart.total)
 
     const handleConfirmPurchase = () => {
-
+        console.log('confirm');
     }
-
     const handleDelete = id => {
-        console.log(id);
+        dispatch(removeItem(id))
     }
 
     const renderCartItem = ({ item }) => <CartItem item={item} handleDelete={handleDelete} />
 
     return (
-        <View style={styles.container}>
-            <View style={styles.cartList}>
-                <FlatList
-                    data={cart}
-                    renderItem={renderCartItem}
-                    keyExtractor={item => item.id}
-                />
-            </View>
-            <View>
-                <View style={styles.total}>
-                    <Text style={styles.text}>Total: </Text>
-                    <Text style={styles.text}>${total}</Text>
-                </View>
-                <ButtonPrimary onPress={() => handleConfirmPurchase()}>Confirmar compra</ButtonPrimary>
-            </View>
+        <View style={[styles.container, { justifyContent: total == 0 ? 'center' : 'space-between' }]}>
+            {
+                total == 0
+                    ?
+                    <Text style={styles.text}>No se encontraron productos en el carrito</Text>
+                    :
+                    <>
+                        <View style={styles.cartList}>
+                            <FlatList
+                                data={cart}
+                                renderItem={renderCartItem}
+                                keyExtractor={item => item.id}
+                            />
+                        </View>
+                        <View>
+                            <View style={styles.total}>
+                                <Text style={styles.text}>Total: </Text>
+                                <Text style={styles.text}>${total}</Text>
+                            </View>
+                            <ButtonPrimary onPress={() => handleConfirmPurchase()}>Confirmar compra</ButtonPrimary>
+                        </View>
+                    </>
+            }
         </View>
     );
 }
