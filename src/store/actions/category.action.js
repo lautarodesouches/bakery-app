@@ -1,4 +1,4 @@
-import { categoryTypes } from "../types/category.types"
+import { categoryTypes } from "../types"
 
 const { SELECT_CATEGORY } = categoryTypes
 

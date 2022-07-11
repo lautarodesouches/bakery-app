@@ -1,7 +1,7 @@
 import { FlatList, View, Text } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { ButtonPrimary, CartItem } from "../../components";
-import { removeItem } from "../../store/actions";
+import { removeItem, confirmCart, clearCart } from "../../store/actions";
 import { styles } from "./styles";
 
 const Cart = () => {
@@ -12,11 +12,10 @@ const Cart = () => {
     const total = useSelector(state => state.cart.total)
 
     const handleConfirmPurchase = () => {
-        console.log('confirm');
+        dispatch(confirmCart(cart, total))
+        dispatch(clearCart())
     }
-    const handleDelete = id => {
-        dispatch(removeItem(id))
-    }
+    const handleDelete = id => dispatch(removeItem(id))
 
     const renderCartItem = ({ item }) => <CartItem item={item} handleDelete={handleDelete} />
 

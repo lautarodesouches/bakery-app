@@ -1,7 +1,6 @@
-import { cart } from "../../constants/data/cart";
 import { cartTypes } from "../types/cart.types";
 
-const { ADD_TO_CART, CONFIRM_CART, REMOVE_ITEM } = cartTypes
+const { ADD_TO_CART, CONFIRM_CART, REMOVE_ITEM, CLEAR_CART } = cartTypes
 
 const initialState = {
     items: [],
@@ -39,6 +38,14 @@ const CartReducer = (state = initialState, action) => {
                 ...state,
                 items: itemsFiltered,
                 total: sumTotal(itemsFiltered)
+            }
+
+        case CLEAR_CART:
+            
+            return {
+                ...state,
+                items: [],
+                total: 0
             }
 
         default:
