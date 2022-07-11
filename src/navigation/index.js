@@ -1,8 +1,13 @@
 import { NavigationContainer } from "@react-navigation/native";
+import { useState } from "react";
 import { StatusBar } from "react-native";
+import AuthNavigator from "./auth";
 import TabNavigator from "./tab";
 
 const AppNavigator = () => {
+
+    const { user, setUser } = useState(null)
+
     return (
         <NavigationContainer>
             <StatusBar
@@ -10,7 +15,7 @@ const AppNavigator = () => {
                 backgroundColor="transparent"
                 barStyle="default"
             />
-            <TabNavigator />
+            {user ? <TabNavigator /> : <AuthNavigator />}
         </NavigationContainer>
     );
 }
