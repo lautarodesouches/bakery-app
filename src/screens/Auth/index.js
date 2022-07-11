@@ -2,6 +2,7 @@ import { useState } from "react"
 import { KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View } from "react-native"
 import { useDispatch } from "react-redux"
 import { CustomButton } from "../../components"
+import { signUp } from "../../store/actions/auth.action"
 import { styles } from "./styles"
 
 const Auth = () => {
@@ -21,7 +22,7 @@ const Auth = () => {
     }
 
     const handleSignUp = () => {
-        //dispatch(signUp(email, password))
+        dispatch(signUp(email, password))
     }
 
     return (
@@ -49,7 +50,7 @@ const Auth = () => {
                         value={password}
                     />
                 </View>
-                <CustomButton buttonStyle={styles.button} textStyle={styles.buttonText} >
+                <CustomButton onPress={handleSignUp} buttonStyle={styles.button} textStyle={styles.buttonText} >
                     Registrarse
                 </CustomButton>
             </View>

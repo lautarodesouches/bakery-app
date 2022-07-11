@@ -1,4 +1,5 @@
-export { default as CategoryReducer } from './category.reducer'
-export { default as ProductReducer } from './product.reducer'
+export { default as AuthReducer } from './auth.reducer'
 export { default as CartReducer } from './cart.reducer'
+export { default as CategoryReducer } from './category.reducer'
 export { default as OrdersReducer } from './orders.reducer'
+export { default as ProductReducer } from './product.reducer'
