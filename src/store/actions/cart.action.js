@@ -20,7 +20,7 @@ export const clearCart = () => ({
 export const confirmCart = (cart, total) => {
     return async dispatch => {
         try {
-            const response = await fetch(`${URL_API}orders.json`, {
+            const response = await fetch(`${URL_API}/orders.json`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -6,15 +6,16 @@ const formatDate = time => {
     return date.toLocaleDateString();
 }
 
-const OrderItem = ({ item, handleSelect }) => {
+const OrderItem = ({ item, handleDelete }) => {
 
-    const { date, total } = item;
+    const { id, date, total } = item;
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.touchable} onPress={() => handleSelect(item)}>
-                <Text style={styles.date}>{formatDate(date)}</Text>
-                <Text style={styles.total}>${total}</Text>
+            <Text style={styles.date}>{formatDate(date)}</Text>
+            <Text style={styles.total}>${total}</Text>
+            <TouchableOpacity style={styles.touchable} onPress={() => handleDelete(id)}>
+                <Text style={styles.delete}>X</Text>
             </TouchableOpacity>
         </View>
     );

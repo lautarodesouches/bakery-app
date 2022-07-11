@@ -1,1 +1,1 @@
-export const URL_API = 'https://other-ecommerce-react-default-rtdb.firebaseio.com/'
+export const URL_API = 'https://other-ecommerce-react-default-rtdb.firebaseio.com'
