@@ -2,6 +2,7 @@ import { useState } from "react"
 import { KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View } from "react-native"
 import { useDispatch } from "react-redux"
 import { CustomButton } from "../../components"
+import Input from "../../components/Input"
 import { signIn, signUp } from "../../store/actions/auth.action"
 import { styles } from "./styles"
 
@@ -40,19 +41,21 @@ const Auth = () => {
             <View style={styles.container}>
                 <Text style={styles.title}>{title}</Text>
                 <View style={styles.form}>
-                    <Text style={styles.label}>Email</Text>
-                    <TextInput
-                        style={styles.input}
+                    <Input
+                        label='Email'
                         keyboardType='email-address'
                         autoCapitalize='none'
+                        placeholder='Email'
+                        placeholderTextColor='black'
                         onChangeText={text => setEmail(text)}
                         value={email}
                     />
-                    <Text style={styles.label}>Clave</Text>
-                    <TextInput
-                        style={styles.input}
+                    <Input
+                        label='Clave'
                         secureTextEntry
                         autoCapitalize='none'
+                        placeholder='Clave'
+                        placeholderTextColor='black'
                         onChangeText={text => setPassword(text)}
                         value={password}
                     />
