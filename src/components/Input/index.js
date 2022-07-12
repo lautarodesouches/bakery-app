@@ -8,11 +8,14 @@ const Input = ({
     value,
     onChangeText,
     onFocus,
-    onBlur,
+    onEndEditing,
     maxLength,
     placeholder,
     placeholderTextColor,
     keyboardType,
+    touched,
+    hasError,
+    error,
     ...props
 },) => {
     return (
@@ -25,7 +28,7 @@ const Input = ({
                     style={styles.input}
                     editable={editable}
                     onFocus={onFocus}
-                    onBlur={onBlur}
+                    onEndEditing={onEndEditing}
                     onChangeText={onChangeText}
                     placeholder={placeholder}
                     placeholderTextColor={placeholderTextColor}
@@ -34,9 +37,15 @@ const Input = ({
                     value={value}
                 />
             </Label>
-            <View style={styles.message}>
-                <Text style={styles.helperText}>{ }</Text>
-            </View>
+            {
+                (hasError && touched) && (
+                    <View style={styles.helperContainer}>
+                        <Text style={styles.helperText}>
+                            {error}
+                        </Text>
+                    </View>
+                )
+            }
         </View>
     )
 }

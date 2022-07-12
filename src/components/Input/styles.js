@@ -13,10 +13,14 @@ export const styles = StyleSheet.create({
         paddingVertical: 5,
         fontSize: 16
     },
-    message: {
-
+    helperContainer: {
+        marginTop: 10,
+        backgroundColor: 'crimson',
+        paddingVertical: 5,
+        borderRadius: 5
     },
     helperText: {
-
+        alignSelf: 'center',
+        color: 'white',
     }
 })
