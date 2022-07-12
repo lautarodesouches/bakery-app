@@ -10,13 +10,17 @@ const initialState = {
 const AuthReducer = (state = initialState, action) => {
     switch (action.type) {
         case SIGN_UP:
-            console.log(action);
             return {
                 ...state,
                 token: action.token,
-                userId: action.userId
-            }
-
+                userId: action.userId,
+            };
+        case SIGN_IN:
+            return {
+                ...state,
+                token: action.token,
+                userId: action.userId,
+            };
         default:
             return state
     }

@@ -2,27 +2,34 @@ import { useState } from "react"
 import { KeyboardAvoidingView, Text, TextInput, TouchableOpacity, View } from "react-native"
 import { useDispatch } from "react-redux"
 import { CustomButton } from "../../components"
-import { signUp } from "../../store/actions/auth.action"
+import { signIn, signUp } from "../../store/actions/auth.action"
 import { styles } from "./styles"
 
 const Auth = () => {
 
     const dispatch = useDispatch()
 
+    const [isLogin, setIsLogin] = useState(true)
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
 
-    const title = 'Registro'
-    const message = 'Ya tienes una cuenta?'
-    const messageAction = 'Ingresar'
-    const messageTarget = 'Login'
+    const title = isLogin ? 'Login' : 'Registro'
+    const message = isLogin ? 'No tienes una cuenta?' : 'Ya tienes una cuenta?'
+    const messageAction = !isLogin ? 'Registrarse' : 'Ingresar'
+    const messageTarget = isLogin ? 'Registrarse' : 'Ingresar'
 
-    const handleAction = () => {
-        console.log('test');
+    const handleChangeAuth = () => {
+        setIsLogin(!isLogin)
+        setPassword('')
+        setEmail('')
     }
 
-    const handleSignUp = () => {
-        dispatch(signUp(email, password))
+    const handleSumbit = () => {
+        dispatch(
+            isLogin
+                ? signIn(email, password)
+                : signUp(email, password)
+        )
     }
 
     return (
@@ -50,14 +57,14 @@ const Auth = () => {
                         value={password}
                     />
                 </View>
-                <CustomButton onPress={handleSignUp} buttonStyle={styles.button} textStyle={styles.buttonText} >
-                    Registrarse
+                <CustomButton onPress={handleSumbit} buttonStyle={styles.button} textStyle={styles.buttonText} >
+                    {messageAction}
                 </CustomButton>
             </View>
             <View style={styles.messageContainer}>
                 <Text style={styles.message}>{message}</Text>
-                <TouchableOpacity onPress={handleAction}>
-                    <Text style={styles.messageButton}>{messageAction}</Text>
+                <TouchableOpacity onPress={handleChangeAuth}>
+                    <Text style={styles.messageButton}>{messageTarget}</Text>
                 </TouchableOpacity>
             </View>
         </KeyboardAvoidingView>

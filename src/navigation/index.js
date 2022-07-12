@@ -1,12 +1,12 @@
 import { NavigationContainer } from "@react-navigation/native";
-import { useState } from "react";
 import { StatusBar } from "react-native";
+import { useSelector } from "react-redux";
 import AuthNavigator from "./auth";
 import TabNavigator from "./tab";
 
 const AppNavigator = () => {
 
-    const { user, setUser } = useState(null)
+    const userId = useSelector((state) => state.auth.userId);
 
     return (
         <NavigationContainer>
@@ -15,7 +15,7 @@ const AppNavigator = () => {
                 backgroundColor="transparent"
                 barStyle="default"
             />
-            {user ? <TabNavigator /> : <AuthNavigator />}
+            {userId ? <TabNavigator /> : <AuthNavigator />}
         </NavigationContainer>
     );
 }
