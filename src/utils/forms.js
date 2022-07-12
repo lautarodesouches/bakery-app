@@ -1,6 +1,6 @@
 const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
-const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/
-const minPasswordLength = 8
+const passwordRegex = /^(?=.*?[0-9])/
+const minPasswordLength = 6
 
 export const UPDATED_FORM = 'UPDATED_FORM'
 
